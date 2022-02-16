@@ -1,22 +1,26 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block title %} Edit {% endblock%}
 {% block content %}
 
 {% if user.is_authenticated %}
 {% if user.id == post.username.id %}
-<h1>Edit Your Post</h1>
-<div class="form-group">
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.media }}
-        {{ form.as_p }}
-        <button class="btn btn-secondary">Update</button>
-    </form>
-</div>
-{% else %}
-<p>You need to login to be able to edit a post.</p>
-{% endif %}
-{% else %}
-<p>You need to login to be able to edit a post.</p>
-{% endif %}
+<section>
+    <h1>Edit Your Post</h1>
+    <div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form.as_p }}
+            <button class="btn btn-secondary">Update</button>
+        </form>
+    </div>
+    {% else %}
+    <p>You need to login to be able to edit a post.</p>
+    {% endif %}
+    {% else %}
+    <p>You need to login to be able to edit a post.</p>
+    {% endif %}
+</section>
 {% endblock %}

@@ -19,6 +19,45 @@
 
 <body>
 
+    <!-- Navigation
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Add Your Book</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Login</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        <div class="banner-img-container">
+            <div class="banner-img-overlay">
+                <div class="image-logo">
+                    <p class="logo-text"><a href="{% url 'home' %}">Virtual Bookshelf</a></p>
+                </div>
+            </div>
+        </div>
+    </nav>-->
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'home' %}">Virtual Bookshelf</a>
@@ -33,7 +72,7 @@
                         <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                     </li>
                     <!-- Category Menu-->
-                    <!--{% if cat_menu %}-->
+                    {% if cat_menu %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -41,16 +80,16 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                            <!--{% for item in cat_menu %}-->
-                            <a class="dropdown-item" href="#">{{ item }}</a>
-                            <!--{% endfor %}-->
+                            {% for item in cat_menu %}
+                            <a class="dropdown-item" href="{% url 'category' item %}">{{ item }}</a>
+                            {% endfor %}
                         </div>
                     </li>
-                    <!--{% else %}-->
+                    {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Categories</a>
+                        <a class="nav-link" href="{% url 'category-list' %}">Categories</a>
                     </li>
-                    <!--{% endif %}-->
+                    {% endif %}
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item dropdown">
@@ -61,7 +100,7 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{% url 'add_post' %}">Add Your Book</a>
                             </li>
-                            <li><a class="dropdown-item" href="#">Add Genre</a></li>
+                            <li><a class="dropdown-item" href="{% url 'add_genre' %}">Add Genre</a></li>
                         </ul>
                     </li>
 
@@ -77,17 +116,18 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Logout</a>
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Register</a>
+                        <a class="nav-link" href="{% url 'register' %}">Register</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Login</a>
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
                     </li>
                     {% endif %}
                 </ul>
+
             </div>
         </div>
     </nav>

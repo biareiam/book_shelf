@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if category_posts %}
+<section class="book-grid">
+    <h2 class="book text-uppercase"> {{ cats }}</h2>
+    <div class="container-fluid">
+        <div class="row">
+            {% for post in category_posts %}
+            <div class="col-lg-4 col-md-4 col-12">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="image-container">
+                            <img class="card-img-top" src="{{ post.featured_image.url }}" alt="Book image">
+                            <div class="image-flash">
+                                <p class="author">By {{ post.author }} | {{ post.category }}</p>
+                            </div>
+                        </div>
+                        <a href="{% url 'article-detail' post.pk %}" class="post-link">
+                            <p class="card-title"><strong>{{ post.title }}</strong></p>
+                        </a>
+
+                        {% if user.is_authenticated %}
+                        <small><a href="{% url 'update_post' post.pk %}">Edit</a>
+                            <a href="{% url 'delete_post' post.pk %}">Delete</a></small>
+                        {% endif %}
+                        <hr />
+                        <p class="card-text text-muted">{{ post.created_on}} <i class="far fa-heart"></i>
+                            <!--{{ post.number_of_likes }}-->
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% if forloop.counter|divisibleby:4%}
+        </div>
+
+        {% endif %}
+        {% endfor %}
+
+    </div>
+
+    {% if is_paginated %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link"><i
+                        class="fas fa-angle-double-left"></i> PREV </a></li>
+            {% endif %}
+            {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT <i
+                        class="fas fa-angle-double-right"></i></a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+
+</section>
+{% else %}
+<p>Sorry, this page does not exist</p>
+{% endif%}
+
+{% endblock %}

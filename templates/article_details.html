@@ -11,7 +11,7 @@
             <!--Book Name-->
             <h2 class="heading-primary">{{ post.title }}</h2>
             <p class="recipe-author">By {{ post.author }} | <span>{{ post.category }}</span><br>
-                <form action="#" method="POST">
+                <form action="{% url 'like_post' post.pk %}" method="POST">
                     {% csrf_token %}
                     {% if user.is_authenticated %}
                     {% if liked %}
@@ -22,7 +22,7 @@
                         <i class="far fa-heart"></i> {{ total_likes }}</button>
                     {% endif %}
                     {% else %}
-                    <small><i class="far fa-heart"></i><a href="#"> Login</a>to like</small>
+                    <small><i class="far fa-heart"></i><a href="{% url 'login' %}"> Login</a>to like</small>
                     {% endif %}
                 </form>
                 <small>
@@ -48,23 +48,23 @@
     <div class="card mb-3">
         <div class="row">
             <div class="col-md-2">
-                <!--{% if post.username.profile.image %}-->
+                {% if post.username.profile.image %}
                 <a href="#"><img src="#" class=" rounded-start" alt="profile image" width="180px" height="190px"></a>
-                <!--{% else %}-->
+                {% else %}
                 <a href="#"><img src="#" class=" rounded-start" alt="profile image" width="180px" height="190px"></a>
-                <!--{% endif %}-->
+                {% endif %}
             </div>
             <div class="col-md-10">
                 <div class="card-body">
                     <h5 class="card-title">{{ post.username.first_name }} {{ post.username.last_name }}</h5>
                     <p class="card-text text-muted"><small>
-                            <!--{% if post.username.profile.facebook_url %}
-                        <a href="#" target="_blank">Facebook</a> |
-                        {% endif %}
+                            {% if post.username.profile.facebook_url %}
+                            <a href="#" target="_blank">Facebook</a> |
+                            {% endif %}
 
-                        {% if post.username.profile.facebook_url %}
-                        <a href="#" target="_blank">Instagram</a>
-                        {% endif %}-->
+                            {% if post.username.profile.facebook_url %}
+                            <a href="#" target="_blank">Instagram</a>
+                            {% endif %}
 
                         </small></p>
                     <p class="card-text">{{ post.username.profile.bio }} </p>

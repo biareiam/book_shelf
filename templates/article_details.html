@@ -49,9 +49,11 @@
         <div class="row">
             <div class="col-md-2">
                 {% if post.username.profile.image %}
-                <a href="#"><img src="#" class=" rounded-start" alt="profile image" width="180px" height="190px"></a>
+                <a href="#"><img src="{{ post.username.profile.image.url }}" class=" rounded-start" alt="profile image"
+                        width="180px" height="190px"></a>
                 {% else %}
-                <a href="#"><img src="#" class=" rounded-start" alt="profile image" width="180px" height="190px"></a>
+                <a href="#"><img src="{% static 'media/image_profile.jpg' %}" class=" rounded-start" alt="profile image"
+                        width="180px" height="190px"></a>
                 {% endif %}
             </div>
             <div class="col-md-10">
@@ -59,11 +61,11 @@
                     <h5 class="card-title">{{ post.username.first_name }} {{ post.username.last_name }}</h5>
                     <p class="card-text text-muted"><small>
                             {% if post.username.profile.facebook_url %}
-                            <a href="#" target="_blank">Facebook</a> |
+                            <a href="{{ post.username.profile.facebook_url }}" target="_blank">Facebook</a> |
                             {% endif %}
 
                             {% if post.username.profile.facebook_url %}
-                            <a href="#" target="_blank">Instagram</a>
+                            <a href="{{ post.username.profile.instagram_url }}" target="_blank">Instagram</a>
                             {% endif %}
 
                         </small></p>

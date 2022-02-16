@@ -1,3 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+
 <section class="book-grid">
     <div class="container-fluid">
         <div class="row">
@@ -20,7 +23,7 @@
             <!-- Blog Entries Column -->
             <div class="col-12 mt-3">
                 <div class="row">
-                    <!--{% for post in object_list %}-->
+                    {% for post in object_list %}
                     <div class="col-lg-4 col-md-4 col-12">
                         <div class="card mb-4">
                             <div class="card-body">
@@ -35,8 +38,8 @@
                                     <p class="card-title"><strong>{{ post.title }}</strong></p>
                                 </a>
 
-                                <!--{% if user.is_authenticated %}
-                                {% if user.id == post.username.id %}-->
+                                {% if user.is_authenticated %}
+                                {% if user.id == post.username.id %}
                                 <small><a href="#">Edit</a>
                                     <a href="#">Delete</a></small>
                                 {% endif %}
@@ -73,3 +76,5 @@
         {% endif %}
     </div>
 </section>
+
+{% endblock %}

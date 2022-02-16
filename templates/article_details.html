@@ -1,0 +1,127 @@
+<div class="container px-0 recipe_container card-img ">
+    <div class="row align-items-start py-5 ">
+        <div class="col-md-6 text-center">
+            <!--Book Name-->
+            <h2 class="heading-primary">{{ post.title }}</h2>
+            <p class="recipe-author">By {{ post.author }} | <span>{{ post.category }}</span><br>
+                <form action="#" method="POST">
+                    {% csrf_token %}
+                    {% if user.is_authenticated %}
+                    {% if liked %}
+                    <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-success btn-sm">
+                        <i class="far fa-heart"></i> {{ total_likes }}</button>
+                    {% else %}
+                    <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-danger btn-sm">
+                        <i class="far fa-heart"></i> {{ total_likes }}</button>
+                    {% endif %}
+                    {% else %}
+                    <small><i class="far fa-heart"></i><a href="#"> Login</a>to like</small>
+                    {% endif %}
+                </form>
+
+
+                <small>
+                    {% if user.is_authenticated %}
+                    {% if user.id == post.username.id %}
+                    <a href="#">Edit</a>
+                    <a href="#">Delete</a>
+                    {% endif %}
+                    {% endif %}
+                </small>
+            </p>
+
+            <img src="#" alt="recipe image" width="400px" height="500px">
+        </div>
+
+        <!--Book Description-->
+        <div class="col-md-6">
+            <p class="paragraph px-3">{{ post.body | safe }}</p>
+
+        </div>
+    </div>
+</div>
+<!-- User-->
+<div class="card mb-3">
+    <div class="row">
+        <div class="col-md-2">
+            <!--{% if post.username.profile.image %}-->
+            <a href="#"><img src="{{ post.username.profile.image.url }}" class=" rounded-start" alt="profile image"
+                    width="180px" height="190px"></a>
+            <!--{% else %}-->
+            <a href="#"><img src="#" class=" rounded-start" alt="profile image" width="180px" height="190px"></a>
+            <!--{% endif %}-->
+        </div>
+        <div class="col-md-10">
+            <div class="card-body">
+                <h5 class="card-title">{{ post.username.first_name }} {{ post.username.last_name }}</h5>
+                <p class="card-text text-muted"><small>
+                        <!--{% if post.username.profile.facebook_url %}
+                        <a href="#" target="_blank">Facebook</a> |
+                        {% endif %}
+
+                        {% if post.username.profile.facebook_url %}
+                        <a href="#" target="_blank">Instagram</a>
+                        {% endif %}-->
+
+                    </small></p>
+                <p class="card-text">{{ post.username.profile.bio }} </p>
+                <p class="card-text"><small class="text-muted">{{  post.created_on }}</small></p>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 card mb-4  mt-3 ">
+            <h3 id="comments">Comments:</h3>
+            <div class="card-body">
+                <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
+                {% for comment in comments %}
+                <div class="comments" style="padding: 10px;">
+                    <p class="font-weight-bold">
+                        <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
+                        {{ comment.name }}
+                        <span class=" text-muted font-weight-normal">
+                            <!-- The comment's created date goes here -->
+                            {{ comment.created_on }}
+                        </span> wrote:
+                    </p>
+                    <!-- The body of the comment goes before the | -->
+                    {{ comment.body | linebreaks }}
+                </div>
+                <div class="row">
+
+                </div>
+                <!-- Our for loop ends here -->
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-4 card mb-4  mt-3 ">
+            <div class="card-body">
+                <!-- For later -->
+                {% if commented %}
+                <div class="alert alert-success" role="alert">
+                    Your comment is awaiting approval
+                </div>
+                {% else %}
+                {% if user.is_authenticated %}
+
+                <h3>Leave a comment:</h3>
+                <p>Posting as: {{ user.username }}</p>
+                <form method="post" style="margin-top: 1.3em;">
+
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+                </form>
+                {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

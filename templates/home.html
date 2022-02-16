@@ -28,7 +28,8 @@
                         <div class="card mb-4">
                             <div class="card-body">
                                 <div class="image-container">
-                                    <img class="card-img-top" src="#" alt="Book image" width="500px" height="450px">
+                                    <img class="card-img-top" src="{{ post.featured_image.url }}" alt="Book image"
+                                        width="500px" height="450px">
                                     <div class="image-flash">
                                         <p class="author">By {{ post.author }}| <a href="#">{{ post.category }}</a>
                                         </p>
@@ -40,8 +41,8 @@
 
                                 {% if user.is_authenticated %}
                                 {% if user.id == post.username.id %}
-                                <small><a href="#">Edit</a>
-                                    <a href="#">Delete</a></small>
+                                <small><a href="{% url 'update_post' post.pk %}">Edit</a>
+                                    <a href="{% url 'delete_post' post.pk %}">Delete</a></small>
                                 {% endif %}
                                 {% endif %}
                                 <hr />

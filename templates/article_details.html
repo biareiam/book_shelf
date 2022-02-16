@@ -28,13 +28,13 @@
                 <small>
                     {% if user.is_authenticated %}
                     {% if user.id == post.username.id %}
-                    <a href="#">Edit</a>
-                    <a href="#">Delete</a>
+                    <a href="{% url 'update_post' post.pk %}">Edit</a>
+                    <a href="{% url 'delete_post' post.pk %}">Delete</a>
                     {% endif %}
                     {% endif %}
                 </small>
             </p>
-            <img src="#" alt="recipe image" width="400px" height="500px">
+            <img src="{{ post.featured_image.url }}" alt="book image" width="400px" height="500px">
         </div>
 
         <!--Book Description-->
@@ -49,8 +49,7 @@
         <div class="row">
             <div class="col-md-2">
                 <!--{% if post.username.profile.image %}-->
-                <a href="#"><img src="{{ post.username.profile.image.url }}" class=" rounded-start" alt="profile image"
-                        width="180px" height="190px"></a>
+                <a href="#"><img src="#" class=" rounded-start" alt="profile image" width="180px" height="190px"></a>
                 <!--{% else %}-->
                 <a href="#"><img src="#" class=" rounded-start" alt="profile image" width="180px" height="190px"></a>
                 <!--{% endif %}-->

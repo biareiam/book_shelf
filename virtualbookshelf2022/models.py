@@ -21,10 +21,16 @@ class Profile(models.Model):
     image = models.ImageField(null=True, blank=True, upload_to="images/profile/")
     instagram_url = models.CharField(max_length=255, null=True, blank=True)
     facebook_url = models.CharField(max_length=255, null=True, blank=True)
+    first_name = models.CharField(max_length=255, default='Mary')
+    last_name = models.CharField(max_length=255, default='Ann')
+    email = models.EmailField(default='my@email.com')
 
 
     def __str__(self):
         return str(self.user)
+    
+    def get_absolute_url(self):
+        return reverse('home')
 
 
 class Post (models.Model):
@@ -52,3 +58,18 @@ class Post (models.Model):
 
     def total_likes(self):
         return self.likes.count()
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, related_name="comments", on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    body = models.TextField()
+    date_addded = models.DateTimeField(auto_now_add=True)
+    #likes = models.ManyToManyField(User, related_name="blog_posts")
+
+    class Meta:
+        ordering = ["-date_addded"]
+    
+    def __str__(self):
+        return '%s -%s' % (self.post.title, self.name)
+
+    

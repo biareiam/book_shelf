@@ -43,16 +43,18 @@
 
         </div>
     </div>
-    </div>
+
     <!-- User-->
     <div class="card mb-3">
         <div class="row">
             <div class="col-md-2">
                 {% if post.username.profile.image %}
-                <a href="{% url 'show_profile' post.username.profile.id %}"><img src="{{ post.username.profile.image.url }}" class=" rounded-start" alt="profile image"
+                <a href="{% url 'show_profile' post.username.profile.id %}"><img
+                        src="{{ post.username.profile.image.url }}" class=" rounded-start" alt="profile image"
                         width="180px" height="190px"></a>
                 {% else %}
-                <a href="{% url 'show_profile' post.username.profile.id %}"><img src="{% static 'media/image_profile.jpg' %}" class=" rounded-start" alt="profile image"
+                <a href="{% url 'show_profile' post.username.profile.id %}"><img
+                        src="{% static 'media/image_profile.jpg' %}" class=" rounded-start" alt="profile image"
                         width="180px" height="190px"></a>
                 {% endif %}
             </div>
@@ -75,59 +77,25 @@
             </div>
         </div>
     </div>
-    <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
-    <div class="container">
+    <section class="container">
         <div class="row">
             <div class="col">
                 <hr>
+                <h5>Comments...</h5>
+                {% if not post.comments.all %}
+                <p><a href="{% url 'add_comment' post.pk %}">Add comment</a></p>
+                {% else%}
+                <a href="{% url 'add_comment' post.pk %}">Add Comment</a>
+                <br><br>
+                {% for comment in post.comments.all %}
+                <strong>{{ comment.name}}</strong> - <small>{{ comment.date_addded}}</small>
+                <br>
+                <p>{{ comment.body }}</p>
+                {% endfor %}
+                {% endif %}
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-8 card mb-4  mt-3 ">
-                <h3 id="comments">Comments:</h3>
-                <div class="card-body">
-                    <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
-                    {% for comment in comments %}
-                    <div class="comments" style="padding: 10px;">
-                        <p class="font-weight-bold">
-                            <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
-                            {{ comment.name }}
-                            <span class=" text-muted font-weight-normal">
-                                <!-- The comment's created date goes here -->
-                                {{ comment.created_on }}
-                            </span> wrote:
-                        </p>
-                        <!-- The body of the comment goes before the | -->
-                        {{ comment.body | linebreaks }}
-                    </div>
-                    <div class="row">
-
-                    </div>
-
-                    {% endfor %}
-                </div>
-            </div>
-            <div class="col-md-4 card mb-4  mt-3 ">
-                <div class="card-body">
-
-                    {% if commented %}
-                    <div class="alert alert-success" role="alert">
-                        Your comment is awaiting approval
-                    </div>
-                    {% else %}
-                    {% if user.is_authenticated %}
-
-                    <h3>Leave a comment:</h3>
-                    <p>Posting as: {{ user.username }}</p>
-                    <form method="post" style="margin-top: 1.3em;">
-
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-signup btn-lg">Submit</button>
-                    </form>
-                    {% endif %}
-                    {% endif %}
-                </div>
-            </div>
-        </div>
+    </section>
+    <hr>
 </section>
 {% endblock %}

@@ -44,39 +44,7 @@
         </div>
     </div>
 
-    <!-- User-->
-    <div class="card mb-3">
-        <div class="row">
-            <div class="col-md-2">
-                {% if post.username.profile.image %}
-                <a href="{% url 'show_profile' post.username.profile.id %}"><img
-                        src="{{ post.username.profile.image.url }}" class=" rounded-start" alt="profile image"
-                        width="180px" height="190px"></a>
-                {% else %}
-                <a href="{% url 'show_profile' post.username.profile.id %}"><img
-                        src="{% static 'media/image_profile.jpg' %}" class=" rounded-start" alt="profile image"
-                        width="180px" height="190px"></a>
-                {% endif %}
-            </div>
-            <div class="col-md-10">
-                <div class="card-body">
-                    <h5 class="card-title">{{ post.username.first_name }} {{ post.username.last_name }}</h5>
-                    <p class="card-text text-muted"><small>
-                            {% if post.username.profile.facebook_url %}
-                            <a href="{{ post.username.profile.facebook_url }}" target="_blank">Facebook</a> |
-                            {% endif %}
 
-                            {% if post.username.profile.facebook_url %}
-                            <a href="{{ post.username.profile.instagram_url }}" target="_blank">Instagram</a>
-                            {% endif %}
-
-                        </small></p>
-                    <p class="card-text">{{ post.username.profile.bio }} </p>
-                    <p class="card-text"><small class="text-muted">{{  post.created_on }}</small></p>
-                </div>
-            </div>
-        </div>
-    </div>
     <section class="container">
         <div class="row">
             <div class="col">

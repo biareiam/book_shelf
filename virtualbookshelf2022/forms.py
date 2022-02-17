@@ -29,12 +29,13 @@ class PostForm(forms.ModelForm):
 class EditForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title','author','featured_image','body')
+        fields = ('title','author','category','featured_image','body')
         widgets = {
             'title':forms.TextInput(attrs={'class':'form-control'}),
             'author':forms.TextInput(attrs={'class':'form-control'}),
             #'username': forms.Select(attrs={'class':'form-control'}),
             #'featured_image':forms.TextInput(attrs={'class':'form-control'}),
+            'category': forms.Select(choices=choice_list, attrs={'class':'form-control'}),
             'body':forms.Textarea(attrs={'class':'form-control'}),
         }
 

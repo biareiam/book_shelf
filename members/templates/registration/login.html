@@ -4,8 +4,8 @@
 {% block title %} Login {% endblock%}
 {% block content %}
 
-<section>
-    <h1>Login</h1>
+<section class="login-section">
+    <h3>Login</h3>
     <div class="form-group">
         <form method="POST">
             {% csrf_token %}
@@ -19,7 +19,7 @@
             </div>
             <div class="signin">Not a User? Register<a href="{% url 'register' %}"> here</a></div>
             <br>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary btn-submit">Submit</button>
         </form>
     </div>
 </section>

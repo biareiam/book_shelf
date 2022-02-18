@@ -4,20 +4,19 @@
 
 
 {% if user.is_authenticated %}
-<h1>Add genres </h1>
+<section class="cat">
+    <h3>Add Categories</h3>
 
-<div class="form-group">
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-secondary">Submit</button>
+    <div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-secondary btn-submit">Submit</button>
 
-</div>
-{% else %}
-<br>
-<br>
-<br>
+    </div>
+    {% else %}
+
 <p>You need to login to be able to edit a post.</p>
 {% endif %}
-
+</section>
 {% endblock %}

@@ -1,7 +1,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html class="h-100">
+<html>
 
 <head>
     <title>{% block title %} Virtual Bookshelf {% endblock %}</title>
@@ -102,17 +102,16 @@
                             <li><a class="dropdown-item" href="{% url 'add_genre' %}">Add Genre</a></li>
                         </ul>
                     </li>
-                    {% if user.profile.id %}
-                    <li><a class="dropdown-item"
-                            href="{% url 'show_profile' user.profile.id %}"></i> {{ user.first_name }}</a></li>
-                    {% else %}
-                    <li><a class="dropdown-item" href="{% url 'create_profile_page' %}">Create Profile</a></li>
-                    {% endif %}
-
-
+                   
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                     </li>
+                    {% if user.profile.id %}
+                    <li><a class="nav-link"href="{% url 'show_profile' user.profile.id %}"></i> {{ user.first_name }}</a></li>
+                    {% else %}
+                    <li><a class="nav-link" href="{% url 'create_profile_page' %}">Create Profile</a></li>
+                    {% endif %}
+
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'register' %}">Register</a>
@@ -129,7 +128,6 @@
     <header class="logo">
         <div class="banner-img-container">
             <div class="banner-img-overlay">
-
             </div>
         </div>
     </header>

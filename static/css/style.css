@@ -1,5 +1,4 @@
 body {
-    background-color: aquamarine;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -12,10 +11,37 @@ li{
 }
 
 /*-------------- Base ----------------*/
+
+.logo{
+    /*background-image: url("https://stock.adobe.com/images/books-on-a-bookshelf-and-pink-wall-background/384873291");*/
+    background-color:blue;
+    height: 12rem;
+    margin-top: 3.5rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    background-size: cover;
+}
+
+@media (min-width: 992px){
+    .navbar-expand-lg .navbar-collapse {
+        display: flex!important;
+        flex-basis: auto;
+        justify-content: flex-end;
+}
+
 /*-------------- Footer ----------------*/
 hr {
     border-top: 3px solid rgb(155, 155, 155);
     margin: 0;
+}
+
+.footer-icon{
+   text-align:center;
+}
+
+.copyright p{
+    padding-top:1rem;
 }
 
 .line {
@@ -87,7 +113,11 @@ hr {
 
 /*-------------- Home Page ----------------*/
 .book-grid{
-    padding:6rem 0 0 1rem;
+    padding:3rem 0 0 1.5rem;
+}
+
+.card-title{
+padding-top:0.5rem;
 }
 
 .card {
@@ -106,6 +136,21 @@ hr {
     padding:0.3rem 3.5rem;
 }
 
+.page-link{
+    background-color:transparent;
+    padding: 0.5rem 2rem;
+    border-radius:10px;
+    color:grey;
+    border:1px solid grey;
+}
+.page-link a {
+    text-decoration:none; 
+}
+.page-link:hover,
+.page-link:focus{
+    background-color:grey;
+    color:white;
+}
 
 /*-------------- Blog Page ----------------*/
 .book_container{
@@ -190,12 +235,83 @@ hr {
 
 
 /*-------------- Add book Page ----------------*/
+.add-post{
+    padding-top:2rem;
+    width:75%;
+    margin:auto;
+}
 /*-------------- Edit book Page ----------------*/
 /*-------------- Delete book Page ----------------*/
 /*-------------- Add Category Page ----------------*/
+.dropdown-item-cat{
+    display:flex;
+    justify-content:
+
+}
+
+.book-categories{
+    margin-top:2rem;
+    margin-bottom:2rem;
+    text-align:center;
+}
+.cat{
+    padding-top:2rem;
+    margin:auto;
+    text-align:center;
+}
+.cat h3{
+    padding-bottom:1rem;
+}
+
 /*-------------- Login Page ----------------*/
+.login-section{
+    width:40%;
+    padding-top:1rem;
+    margin:auto;   
+}
+
+.btn-submit{
+    margin-top:0.5rem;
+    margin-bottom:1rem;
+}
+
+
+
 /*-------------- Register Page ----------------*/
+.registration-container{
+    width:40%;
+    padding-top:1rem;
+    margin:auto;  
+}
 /*-------------- Change Password Page ----------------*/
+.password-section{
+    padding-top:4rem;
+}
 /*-------------- Create Profile Page ----------------*/
 /*-------------- Profile Page ----------------*/
+.user-profile{
+    padding-top:2rem;
+    margin-left:auto;
+    
+}
+.btn-profile{
+    padding:0.3rem 4rem; 
+    text-decoration:none;
+    background-color:transparent;
+    color:grey; 
+    border:grey 1px solid;
+    margin-bottom:1.5rem;
+    
+}
+.btn-profile>a{
+    text-decoration:none !important;
+}
+.btn-profile:hover{
+    color:white;
+    background-color:grey
+}
 /*-------------- Settings Page ----------------*/
+.setting{
+    margin-top:2rem;
+    width:80%;
+}

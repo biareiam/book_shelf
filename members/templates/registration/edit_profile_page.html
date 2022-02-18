@@ -4,16 +4,18 @@
 {% block title %} Edit Profile Page {% endblock%}
 
 {% block content %}
-{% if user.is_authenticated %}
-<h1> Edit Profile Page </h1>
-<form method="POST" enctype="multipart/form-data">
+<section class="setting">
+    {% if user.is_authenticated %}
+    <h3> Edit Profile Page </h3>
     <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.media }}
-        {{ form.as_p }}
-        <button class="btn btn-secondary">Update Profile Page</button>
-    </form>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form.as_p }}
+            <button type="button" class="btn btn-success btn-profile">Update Profile Page</button>
+        </form>
 
-</div>
-{% endif %}
+    </div>
+    {% endif %}
+</section>
 {% endblock %}

@@ -6,7 +6,7 @@ from virtualbookshelf2022.models import Profile
 class ProfilePageForm(forms.ModelForm):
     class Meta: 
         model = Profile
-        fields = ('bio','instagram_url', 'facebook_url')
+        fields = ('bio', 'image','instagram_url', 'facebook_url')
         widgets = {
             'bio':forms.Textarea(attrs={'class':'form-control' }),
             #'image':forms.TextInput(attrs={'class':'form-control'}),

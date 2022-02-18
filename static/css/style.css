@@ -1,0 +1,201 @@
+body {
+    background-color: aquamarine;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a{
+    text-decoration:none;
+}
+li{
+    list-style:none;
+}
+
+/*-------------- Base ----------------*/
+/*-------------- Footer ----------------*/
+hr {
+    border-top: 3px solid rgb(155, 155, 155);
+    margin: 0;
+}
+
+.line {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 3px solid rgb(219, 219, 219);
+    margin: 0 3rem;
+}
+
+.icon {
+    text-align: right;
+    margin-left: -100px;
+}
+
+@media(max-width:500px) {
+    .icon {
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .copyright {
+        text-align: center;
+        margin-bottom: -1rem;
+    }
+}
+
+#lab_social_icon_footer {
+    padding: 10px 0;
+    font-size: 0.8rem;
+}
+
+#lab_social_icon_footer a {
+    color: rgb(145, 145, 145);
+}
+
+#lab_social_icon_footer .social:hover {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+}
+
+#lab_social_icon_footer .social {
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    -o-transform: scale(0.8);
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+}
+
+#lab_social_icon_footer #social-fb:hover {
+    color: #3B5998;
+}
+
+#lab_social_icon_footer #social-tw:hover {
+    color: #4099FF;
+}
+
+#lab_social_icon_footer #social-gp:hover {
+    color: #d34836;
+}
+
+#lab_social_icon_footer #social-ig:hover {
+    color: #f3127b;
+}
+
+
+
+/*-------------- Home Page ----------------*/
+.book-grid{
+    padding:6rem 0 0 1rem;
+}
+
+.card {
+    border: none;
+    background-color: transparent;
+}
+.image-container {
+    position: relative;  
+}
+.edit-delete{
+    padding-top:-2rem;
+}
+
+.btn-edit,
+.btn-delete{
+    padding:0.3rem 3.5rem;
+}
+
+
+/*-------------- Blog Page ----------------*/
+.book_container{
+    padding:7rem 3rem 4rem 2rem;
+}
+.card-img{
+    text-align:center;
+}
+.card-book-body{
+    padding-top:1rem;
+}
+.image-container-2{
+    padding-bottom:2rem;
+}
+.likes{
+    margin-top:-1.7rem;
+    margin-bottom:2rem;
+}
+.text-body{
+    margin-right:-2rem;
+    text-align: justify;
+}
+.paragraph{
+    text-align:justify;
+}
+
+
+
+@media(max-width:350px){
+    .btn-edit-2,
+    .btn-delete-2 {
+        padding: 0.3rem 3rem;
+    } 
+      
+}
+@media(max-width:400px){
+    .btn-edit-2,
+    .btn-delete-2{
+        padding: 0.3rem 3.5rem;
+    } 
+}
+
+@media(max-width:790px){
+    .book_container{
+        padding:0;
+    }
+     
+}
+
+
+.paragraph{
+    margin-top:-2rem;
+}
+
+.card{
+    display:flex;
+    flex-direction:row;
+}
+
+.update-post{
+    margin-top:-2.2rem;
+    margin-bottom:1rem;
+}
+.btn-edit-2,
+.btn-delete-2{
+    padding:0.3rem 4rem;
+  }
+
+.btn-edit-2 a,.btn-delete-2 a{
+    color:white;  
+}
+.update-post{
+    text-align:center;
+    padding-top:1.3rem;
+    padding-bottom:1.5rem;
+}
+.card-body{
+    background-color:pink;
+}
+
+
+
+
+/*-------------- Add book Page ----------------*/
+/*-------------- Edit book Page ----------------*/
+/*-------------- Delete book Page ----------------*/
+/*-------------- Add Category Page ----------------*/
+/*-------------- Login Page ----------------*/
+/*-------------- Register Page ----------------*/
+/*-------------- Change Password Page ----------------*/
+/*-------------- Create Profile Page ----------------*/
+/*-------------- Profile Page ----------------*/
+/*-------------- Settings Page ----------------*/

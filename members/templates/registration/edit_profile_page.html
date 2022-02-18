@@ -4,8 +4,8 @@
 {% block title %} Edit Profile Page {% endblock%}
 
 {% block content %}
-<section class="setting">
-    {% if user.is_authenticated %}
+{% if user.is_authenticated %}
+<section class="edit-profile">
     <h3> Edit Profile Page </h3>
     <form method="POST" enctype="multipart/form-data">
         <form method="POST" enctype="multipart/form-data">
@@ -16,6 +16,6 @@
         </form>
 
     </div>
-    {% endif %}
 </section>
+{% endif %}
 {% endblock %}

@@ -1,21 +1,16 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} Edit profile {% endblock%}
+{% block title %} Settings {% endblock%}
 {% block content %}
-
-<section>
-<h3>Edit Profile</h3>
-
-
-<div class="form-group">
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-secondary">Update Profile</button>
-
-</div>
+<section class="settings">
+    <h3>Seeting</h3>
+    <div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="button" class="btn btn-success btn-profile">Update Profile</button>
+        </form>
+    </div>
 </section>
-
-
 {% endblock %}

@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'virtualbookshelf2022',
     'ckeditor',
-    'members',
+    'member',
 
 ]
 

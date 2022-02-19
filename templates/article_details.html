@@ -8,24 +8,25 @@
 <section class="container book_container">
     <div class="card-img">
         <h2 class="heading-primary">{{ post.title }}</h2>
-            <p class="recipe-author">By {{ post.author }} | <a href="{% url 'category' post.category %}">{{ post.category }}</a></p><br>
-                <div class="likes">
-                    <form action="{% url 'like_post' post.pk %}" method="POST">
-                            {% csrf_token %}
-                            {% if user.is_authenticated %}
-                            {% if liked %}
-                            <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-success btn-sm">
-                                <i class="far fa-heart"></i> {{ total_likes }}</button>
-                            {% else %}
-                            <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-danger btn-sm">
-                                <i class="far fa-heart"></i> {{ total_likes }}</button>
-                            {% endif %}
-                            {% else %}
-                            <small><i class="far fa-heart"></i>   <a href="{% url 'login' %}"> Login</a> to like</small>
-                            {% endif %}
-                    </form>
-                </div>
+        <p class="recipe-author">By {{ post.author }} | <a
+                href="{% url 'category' post.category %}">{{ post.category }}</a></p><br>
+        <div class="likes">
+            <form action="{% url 'like_post' post.pk %}" method="POST">
+                {% csrf_token %}
+                {% if user.is_authenticated %}
+                {% if liked %}
+                <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-success btn-sm">
+                    <i class="far fa-heart"></i> {{ total_likes }}</button>
+                {% else %}
+                <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-danger btn-sm">
+                    <i class="far fa-heart"></i> {{ total_likes }}</button>
+                {% endif %}
+                {% else %}
+                <small><i class="far fa-heart"></i> <a href="{% url 'login' %}"> Login</a> to like</small>
+                {% endif %}
+            </form>
         </div>
+    </div>
 
     <div class="card mb-3">
         <div class="row">
@@ -35,13 +36,15 @@
                 </div>
                 {% if user.is_authenticated %}
                 {% if user.id == post.username.id %}
-                
+
                 <div class="update-post">
-                    <button type="button" class="btn btn-success btn-edit-2"><a href="{% url 'update_post' post.pk %}">Edit</a></button>
-                    <button type="button" class="btn btn-danger btn-delete-2"><a href="{% url 'delete_post' post.pk %}">Delete</a></button>
+                    <button type="button" class="btn btn-success btn-edit-2"><a
+                            href="{% url 'update_post' post.pk %}">Edit</a></button>
+                    <button type="button" class="btn btn-danger btn-delete-2"><a
+                            href="{% url 'delete_post' post.pk %}">Delete</a></button>
                 </div>
                 {% endif %}
-            {% endif %}
+                {% endif %}
             </div>
             <div class="col-lg-6 col-md-12">
                 <div class="card-book-body paragraph">
@@ -50,56 +53,55 @@
             </div>
         </div>
     </div>
- 
-  
+
+
     <div class="card mb-3" style="max-width: 540px;">
         <div class="row g-0">
-          <div class="col-md-4">
-          {% if post.username.profile.image %}
-          <img src="{{ post.username.profile.image.url }}"
-          class="img-fluid rounded-start" alt="profile image">
-           {% else %}
-           <img src="{% static 'media/profile_default.jpg' %}" class="img-fluid rounded-start" alt="profile image"
-                   width="180px" height="190px">
-           {% endif %}
-       </div>
-          <div class="col-md-8 card-body">
-            <div class="card-body-2">
-              <h5 class="card-title">{{ post.username.first_name }} {{ post.username.last_name }}</h5>
-              <p class="card-text text-muted"><small>
-                {% if post.username.profile.facebook_url %}
-                <a href="{{ post.username.profile.facebook_url }}" target="_blank">Facebook</a> |
+            <div class="col-md-4">
+                {% if post.username.profile.image %}
+                <img src="{{ post.username.profile.image.url }}" class="img-fluid rounded-start" alt="profile image">
+                {% else %}
+                <img src="{% static 'media/image_profile.jpg' %}" class="img-fluid rounded-start" alt="profile image"
+                    width="180px" height="190px">
                 {% endif %}
+            </div>
+            <div class="col-md-8 card-body">
+                <div class="card-body-2">
+                    <h5 class="card-title">{{ post.username.first_name }} {{ post.username.last_name }}</h5>
+                    <p class="card-text text-muted"><small>
+                            {% if post.username.profile.facebook_url %}
+                            <a href="{{ post.username.profile.facebook_url }}" target="_blank">Facebook</a> |
+                            {% endif %}
 
-                {% if post.username.profile.facebook_url %}
-                <a href="{{ post.username.profile.instagram_url }}" target="_blank">Instagram</a>
-                {% endif %}
+                            {% if post.username.profile.facebook_url %}
+                            <a href="{{ post.username.profile.instagram_url }}" target="_blank">Instagram</a>
+                            {% endif %}
 
-            </small></p>
-              <p class="card-text">{{ post.username.profile.bio }} </p>
+                        </small></p>
+                    <p class="card-text">{{ post.username.profile.bio }} </p>
                     <p class="card-text"><small class="text-muted">{{  post.created_on }}</small></p>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
 
-        <div class="row">
-            <div class="col">
-                <hr>
-                <h5>Comments...</h5>
-                {% if not post.comments.all %}
-                <p><a href="{% url 'add_comment' post.pk %}">Add comment</a></p>
-                {% else%}
-                <a href="{% url 'add_comment' post.pk %}">Add Comment</a>
-                <br><br>
-                {% for comment in post.comments.all %}
-                <strong>{{ comment.name}}</strong> - <small>{{ comment.date_addded}}</small>
-                <br>
-                <p>{{ comment.body }}</p>
-                {% endfor %}
-                {% endif %}
-            </div>
+    <div class="row">
+        <div class="col">
+            <hr>
+            <h5>Comments...</h5>
+            {% if not post.comments.all %}
+            <p><a href="{% url 'add_comment' post.pk %}">Add comment</a></p>
+            {% else%}
+            <a href="{% url 'add_comment' post.pk %}">Add Comment</a>
+            <br><br>
+            {% for comment in post.comments.all %}
+            <strong>{{ comment.name}}</strong> - <small>{{ comment.date_addded}}</small>
+            <br>
+            <p>{{ comment.body }}</p>
+            {% endfor %}
+            {% endif %}
         </div>
+    </div>
     </div>
     <hr>
 </section>

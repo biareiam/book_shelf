@@ -24,7 +24,7 @@
 
     {% else %}
 
-    <p>You need to login to be able to edit a post.</p>
+    <p>You need to login to be able to edit a post. <a href="{% url 'login_user' %}">Login Here</a></p>
     {% endif %}
 </section>
 {% endblock %}

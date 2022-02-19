@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 
-
 {% block title %} Login {% endblock%}
 {% block content %}
 
@@ -17,7 +16,7 @@
                 <label for="exampleInputPassword1" class="form-label">Password</label>
                 <input type="password" class="form-control" id="exampleInputPassword1" name="password">
             </div>
-            <div class="signin">Not a User? Register<a href="{% url 'register' %}"> here</a></div>
+            <div class="signin">Not a User? Register<a href="#"> here</a></div>
             <br>
             <button type="submit" class="btn btn-primary btn-submit">Submit</button>
         </form>

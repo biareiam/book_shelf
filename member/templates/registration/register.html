@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Register {% endblock%}
+{% block content %}
+
+{% if form.errors %}
+<br>
+<div class="alert alert-danger" role="alert">
+    There was an error with your form!
+</div>
+
+{% endif %}
+
+<section class="registration-container">
+    <div class="shadow p-4 mb-5 bg-body rounded">
+        <h3>Register User</h3>
+
+        <div class="form-group">
+            <form method="POST" action="{% url 'register' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-secondary btn-submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

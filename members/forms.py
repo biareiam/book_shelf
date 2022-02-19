@@ -11,8 +11,7 @@ class ProfilePageForm(forms.ModelForm):
             'bio':forms.Textarea(attrs={'class':'form-control' }),
             #'image':forms.TextInput(attrs={'class':'form-control'}),
             'instagram_url': forms.TextInput(attrs={'class':'form-control'}),
-            'facebook_url': forms.TextInput(attrs={'class':'form-control'}),           
-
+            'facebook_url': forms.TextInput(attrs={'class':'form-control'}),
     }
 
 class SignUpForm(UserCreationForm):
@@ -38,7 +37,6 @@ class EditProfileForm(UserChangeForm):
     username = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
     last_login = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
   
-    
     class Meta:
         model = User
         fields = ('username','first_name','last_name','email','last_login')

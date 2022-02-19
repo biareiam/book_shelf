@@ -1,21 +1,25 @@
 {% extends 'base.html' %}
-{% load static %}
 
 {% block title %} Edit Profile Page {% endblock%}
 
 {% block content %}
+
 {% if user.is_authenticated %}
+{% if user.id == profile.user.id %}
 <section class="edit-profile">
-    <h3> Edit Profile Page </h3>
-    <form method="POST" enctype="multipart/form-data">
+    <h3> Edit Profile Page</h3>
+    <div class="form-group">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ form.media }}
             {{ form.as_p }}
             <button type="button" class="btn btn-success btn-profile">Update Profile Page</button>
         </form>
-
     </div>
 </section>
+{% else %}
+<p> You need to login to be able to edit. </p>
+{% endif %}
+{% else %}
+<p>You are not the correct user to edit this post.</p>
 {% endif %}
 {% endblock %}

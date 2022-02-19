@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+
 
 {% block content %}
 
@@ -20,10 +20,10 @@
             <div class="card-body-2">
             <h5 class="card-title">{{ page_user.username.first_name }} {{ page_user.username.last_name }}</h5>
             <p class="card-text text-muted"><small>
-                {% if post.username.profile.facebook_url %}
+                {% if page_user.profile.facebook_url %}
                 <a href="{{ page_user.facebook_url }}" target="_blank">Facebook</a> |
                 {% endif %}
-                {% if post.username.profile.facebook_url %}
+                {% if post.page_user.profile.facebook_url %}
                 <a href="{{ page_user.instagram_url }}" target="_blank">Instagram</a>
                 {% endif %}
 

@@ -13,21 +13,14 @@
                         <div class="image-container">
                             <img class="card-img-top" src="{{ post.featured_image.url }}" alt="Book image">
                             <div class="image-flash">
+                                <a href="{% url 'article-detail' post.pk %}" class="post-link">
+                                    <p class="card-title"><strong>{{ post.title }}</strong></p>
+                                </a>
                                 <p class="author">By {{ post.author }} | {{ post.category }}</p>
                             </div>
                         </div>
-                        <a href="{% url 'article-detail' post.pk %}" class="post-link">
-                            <p class="card-title"><strong>{{ post.title }}</strong></p>
-                        </a>
-
-                        {% if user.is_authenticated %}
-                        <small><a href="{% url 'update_post' post.pk %}">Edit</a>
-                            <a href="{% url 'delete_post' post.pk %}">Delete</a></small>
-                        {% endif %}
                         <hr />
-                        <p class="card-text text-muted">{{ post.created_on}} <i class="far fa-heart"></i>
-                            <!--{{ post.number_of_likes }}-->
-                        </p>
+                        <p class="card-text text-muted">{{ post.created_on}}</p>
                     </div>
                 </div>
             </div>

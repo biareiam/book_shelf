@@ -6,12 +6,12 @@
 
 {% if user.is_authenticated %}
 <section class="add-post">
+    <div class="shadow p-4 mb-5 bg-body rounded">
     <h3>Add Your Book</h3>
-
     <div class="form-group">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ form.media }}
+            {{ form.media}}
             {{ form.as_p }}
             <button class="btn btn-outline-secondary">Submit</button>
         </form>
@@ -26,5 +26,6 @@
 
     <p>You need to login to be able to edit a post. <a href="{% url 'login_user' %}">Login Here</a></p>
     {% endif %}
+</div>
 </section>
 {% endblock %}

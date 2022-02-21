@@ -1,7 +1,15 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Glory:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    border: box-sizing;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+   background-color:#eee;
+    font-weight: 300;
 }
 
 a {
@@ -17,6 +25,16 @@ li {
     padding-top: 4rem;
 }
 
+.navbar{
+    background-color:gray;
+}
+
+.logo{
+    background: url("static/media/image1.jpeg") 50% 0 no-repeat fixed;
+    color: white;
+    
+    
+}
 /*-------------- home page -----------*/
 .page-link {
     border: 1px solid gray;
@@ -201,4 +219,54 @@ hr {
     background-color: grey;
     color: white;
     text-decoration: none;
+}
+
+/*******Add Book********/
+
+.setting,
+.edit-post,
+.add-post,
+.cke_id_body{
+    width:80%;
+    margin:auto;
+}
+
+
+@media (max-width:800px){
+    .setting,
+.edit-post,
+.add-post,
+.cke_id_body{
+    width:70%;
+    margin:auto;
+}
+}
+
+
+
+/*Login*/
+.register,
+.login{
+    width:60%;
+    margin:auto;
+}
+@media (max-width:800px){
+    .register,
+.login{
+    width:70%;
+    margin:auto;
+}
+}
+
+@media (max-width:500px){
+    .register,
+.login{
+    width:80%;
+    margin:auto;
+}
+}
+
+.login-section{
+    margin-top:2rem;
+    margin-bottom:2rem;
 }

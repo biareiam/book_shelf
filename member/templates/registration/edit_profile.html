@@ -3,13 +3,13 @@
 {% block content %}
 
 
-<h3>Edit Profile</h3>
+<h3>Settings</h3>
 
 <div class="form-group">
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p}}
-        <button class="btn btn-secondary">Edit Profile</button>
+        <button class="btn btn-outline-secondary">Edit Profile</button>
     </form>
 </div>
 

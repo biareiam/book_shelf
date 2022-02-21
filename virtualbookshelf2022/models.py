@@ -5,6 +5,7 @@ from django.urls import reverse
 from ckeditor.fields import RichTextField
 
 
+
 class Category(models.Model):
     name = models.CharField(max_length=255)
     
@@ -31,6 +32,9 @@ class Profile(models.Model):
     
     def get_absolute_url(self):
         return reverse('home')
+    
+    def save(self):
+      super().save()
 
 
 class Post (models.Model):

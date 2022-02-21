@@ -1,22 +1,21 @@
+
 {% extends 'base.html' %}
-{% block title %} Add Book Genres{% endblock%}
+
+{% block title %} Create New Profile Page {% endblock%}
 {% block content %}
 
-
 {% if user.is_authenticated %}
-<section class="cat">
-    <h3>Add Categories</h3>
-
+<section class="create">
+    <h3>Create Profile Page</h3>
     <div class="form-group">
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
-            <button class="btn btn-outline-secondary">Submit</button>
-
+            <button type="button" class="btn btn-success btn-profile">Update Profile</button>
+        </form>
     </div>
     {% else %}
-
     <p>You need to login to be able to edit a post.</p>
-    {% endif %}
 </section>
+{% endif %}
 {% endblock %}

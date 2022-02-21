@@ -8,8 +8,8 @@
 <section class="container book_container">
     <div class="card-img">
         <h2 class="heading-primary">{{ post.title }}</h2>
-        <p class="recipe-author">By {{ post.author }} | <a
-                href="{% url 'category' post.category %}">{{ post.category }}</a></p><br>
+        <p class="author">By {{ post.author }} | <a href="{% url 'category' post.category %}">{{ post.category }}</a>
+        </p><br>
         <div class="likes">
             <form action="{% url 'like_post' post.pk %}" method="POST">
                 {% csrf_token %}
@@ -28,7 +28,7 @@
         </div>
     </div>
 
-    <div class="card mb-3">
+    <div class="card-body mb-3">
         <div class="row">
             <div class="col-lg-6 col-md-12">
                 <div class="image-container-2">
@@ -38,9 +38,9 @@
                 {% if user.id == post.username.id %}
 
                 <div class="update-post">
-                    <button type="button" class="btn btn-success btn-edit-2"><a
+                    <button type="button" class="btn btn-outline-success button"><a
                             href="{% url 'update_post' post.pk %}">Edit</a></button>
-                    <button type="button" class="btn btn-danger btn-delete-2"><a
+                    <button type="button" class="btn btn-outline-danger button"><a
                             href="{% url 'delete_post' post.pk %}">Delete</a></button>
                 </div>
                 {% endif %}
@@ -55,7 +55,7 @@
     </div>
 
 
-    <div class="card mb-3" style="max-width: 540px;">
+    <!--<div class="card mb-3" style="max-width: 540px;">
         <div class="row g-0">
             <div class="col-md-4">
                 {% if post.username.profile.image %}
@@ -83,17 +83,18 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 
-    <div class="row">
+
+    <div class="row comment">
         <div class="col">
-            <hr>
-            <h5>Comments...</h5>
+
+            <h5 class="comment-title">Comments...</h5>
             {% if not post.comments.all %}
-            <p><a href="{% url 'add_comment' post.pk %}">Add comment</a></p>
+            <p><a href="{% url 'add_comment' post.pk %}" class="add-comment">Add comment</a></p>
             {% else%}
-            <a href="{% url 'add_comment' post.pk %}">Add Comment</a>
-            <br><br>
+            <p><a href="{% url 'add_comment' post.pk %}" class="add-comment">Add Comment</a></p>
+
             {% for comment in post.comments.all %}
             <strong>{{ comment.name}}</strong> - <small>{{ comment.date_addded}}</small>
             <br>
@@ -102,7 +103,6 @@
             {% endif %}
         </div>
     </div>
-    </div>
-    <hr>
+
 </section>
 {% endblock %}

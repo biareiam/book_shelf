@@ -3,32 +3,94 @@ body {
     padding: 0;
     box-sizing: border-box;
 }
-a{
-    text-decoration:none;
+
+a {
+    text-decoration: none;
 }
-li{
-    list-style:none;
+
+li {
+    list-style: none;
 }
 
 /*-------------- Base ----------------*/
-
-.logo{
-    /*background-image: url("https://stock.adobe.com/images/books-on-a-bookshelf-and-pink-wall-background/384873291");*/
-    background-color:blue;
-    height: 12rem;
-    margin-top: 3.5rem;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
-    background-size: cover;
+.main-section {
+    padding-top: 4rem;
 }
 
-@media (min-width: 992px){
-    .navbar-expand-lg .navbar-collapse {
-        display: flex!important;
-        flex-basis: auto;
-        justify-content: flex-end;
+/*-------------- home page -----------*/
+.page-link {
+    border: 1px solid gray;
+    color: gray;
+    padding: 0.6rem 2rem;
+    border-radius: 10px;
 }
+
+.page-link:hover {
+    background-color: gray;
+    color: white;
+}
+
+.card-img {
+    text-align: center;
+}
+
+/** page detail**/
+.likes {
+    margin-top: -1.5rem;
+    margin-bottom: 1rem;
+}
+
+.author {
+    color: gray;
+    font-style: italic;
+}
+
+.card-body {
+    border: none;
+}
+
+.button a {
+    text-decoration: none;
+    color: black;
+    padding: 1rem 2rem;
+}
+
+.update-post {
+    padding-top: 1rem;
+    margin-bottom: -2.2rem;
+    text-align: center;
+}
+
+.comment-title {
+    padding-bottom: 1rem;
+}
+
+.comment {
+    background-color: #eee;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    padding-top: 1rem;
+    border-radius: 5px;
+
+}
+
+.add-comment {
+    padding: 0.3rem;
+    background-color: gray;
+    border: 1px solid gray;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    margin-bottom: -2rem;
+}
+
+.add-comment:hover {
+    background-color: #eee;
+    color: gray;
+    text-decoration: none;
+}
+
+
 
 /*-------------- Footer ----------------*/
 hr {
@@ -36,12 +98,13 @@ hr {
     margin: 0;
 }
 
-.footer-icon{
-   text-align:center;
+.footer-icon {
+    text-align: center;
 }
 
-.copyright p{
-    padding-top:1rem;
+.copyright p {
+    padding-top: 1rem;
+    color: gray;
 }
 
 .line {
@@ -109,220 +172,33 @@ hr {
     color: #f3127b;
 }
 
-
-
-/*-------------- Home Page ----------------*/
-.book-grid{
-    padding:3rem 0 0 1.5rem;
+/*****************/
+.categories {
+    display: inline-block;
 }
 
-.card-title{
-padding-top:0.5rem;
+.dropdown-item-cat {
+    padding-right: 2rem;
+    padding-left: 2rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    display: inherit;
+    color: gray;
+    text-decoration: none;
+    border: 1px solid grey;
+    border-radius: 5px;
+    font-size: 1.2rem;
 }
 
-.card {
-    border: none;
-    background-color: transparent;
-}
-.image-container {
-    position: relative;  
-}
-.edit-delete{
-    padding-top:-2rem;
-}
-
-.btn-edit,
-.btn-delete{
-    padding:0.3rem 3.5rem;
-}
-
-.page-link{
-    background-color:transparent;
-    padding: 0.5rem 2rem;
-    border-radius:10px;
-    color:grey;
-    border:1px solid grey;
-}
-.page-link a {
-    text-decoration:none; 
-}
-.page-link:hover,
-.page-link:focus{
-    background-color:grey;
-    color:white;
-}
-
-/*-------------- Blog Page ----------------*/
-.book_container{
-    padding:3rem 3rem 4rem 2rem;
-}
-.card-img{
-    text-align:center;
-}
-.card-book-body{
-    padding-top:1rem;
-}
-.image-container-2{
-    padding-bottom:2rem;
-}
-.likes{
-    margin-top:-1.7rem;
-    margin-bottom:2rem;
-}
-.text-body{
-    margin-right:-2rem;
-    text-align: justify;
-}
-.paragraph{
-    text-align:justify;
-}
-
-
-
-@media(max-width:350px){
-    .btn-edit-2,
-    .btn-delete-2 {
-        padding: 0.3rem 3rem;
-    } 
-      
-}
-@media(max-width:400px){
-    .btn-edit-2,
-    .btn-delete-2{
-        padding: 0.3rem 3.5rem;
-    } 
-}
-
-@media(max-width:790px){
-    .book_container{
-        padding:0;
-    }
-     
-}
-
-
-.paragraph{
-    margin-top:-2rem;
-}
-
-.card{
-    display:flex;
-    flex-direction:row;
-}
-
-.update-post{
-    margin-top:-2.2rem;
-    margin-bottom:1rem;
-}
-.btn-edit-2,
-.btn-delete-2{
-    padding:0.3rem 4rem;
-  }
-
-.btn-edit-2 a,.btn-delete-2 a{
-    color:white;  
-}
-.update-post{
-    text-align:center;
-    padding-top:1.3rem;
-    padding-bottom:1.5rem;
-}
-.card-body{
-    background-color:pink;
-}
-
-
-
-
-/*-------------- Add book Page ----------------*/
-.add-post{
-    padding-top:2rem;
-    width:75%;
-    margin:auto;
-}
-/*-------------- Edit book Page ----------------*/
-/*-------------- Delete book Page ----------------*/
-/*-------------- Add Category Page ----------------*/
-.dropdown-item-cat{
-    display:flex;
-    justify-content:
+.categories {
+    padding: 6rem 6rem 8rem 6rem;
+    text-align: center;
 
 }
 
-.book-categories{
-    margin-top:2rem;
-    margin-bottom:2rem;
-    text-align:center;
-}
-.cat{
-    padding-top:2rem;
-    margin:auto;
-    text-align:center;
-}
-.cat h3{
-    padding-bottom:1rem;
-}
-
-/*-------------- Login Page ----------------*/
-.login-section{
-    width:40%;
-    padding-top:1rem;
-    margin:auto;   
-}
-
-.btn-submit{
-    margin-top:0.5rem;
-    margin-bottom:1rem;
-}
-
-
-
-/*-------------- Register Page ----------------*/
-.registration-container{
-    width:40%;
-    padding-top:1rem;
-    margin:auto;  
-}
-/*-------------- Change Password Page ----------------*/
-.password-section{
-    padding-top:4rem;
-}
-.change-password{
-    padding-top:2rem;
-    width:40%;
-    margin:auto;
-}
-/*-------------- Create Profile Page ----------------*/
-.create-profile{
-    padding-top:2rem;
-    width:60%;
-    margin:auto;
-}
-/*-------------- Profile Page ----------------*/
-.user-profile{
-    padding-top:2rem;
-    margin-left:auto;
-    
-}
-.btn-profile{
-    padding:0.3rem 4rem; 
-    text-decoration:none;
-    background-color:transparent;
-    color:grey; 
-    border:grey 1px solid;
-    margin-bottom:1.5rem;
-    
-}
-.btn-profile>a{
-    text-decoration:none !important;
-}
-.btn-profile:hover{
-    color:white;
-    background-color:grey
-}
-/*-------------- Settings Page ----------------*/
-.settings{
-    margin-top:2rem;
-    width:60%;
-    margin:auto;
+.dropdown-item-cat:hover {
+    background-color: grey;
+    color: white;
+    text-decoration: none;
 }

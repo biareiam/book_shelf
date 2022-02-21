@@ -4,7 +4,7 @@
 <html class="h-100">
 
 <head>
-    <title>CodeStar Blog</title>
+    <title>{% block title %}Virtual Bookshelf{% endblock%}</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
@@ -103,24 +103,28 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ user.first_name }}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     </li>
-                    {% if user.profile.id %}
-                    <li><a class="nav-link" href="{% url 'show_profile_page' user.profile.id %}"></i>
-                            {{ user.first_name }}</a></li>
-                    {% else %}
-                    <li><a class="nav-link" href="{% url 'create_profile_page' %}">Create Profile</a></li>
-                    {% endif %}
+                    <li><a class="dropdown-item" href="{% url 'edit_profile' %}">Settings</a>
+                    </li>
+                    <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                    </li>
 
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'register' %}">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Login</a>
-                    </li>
-                    {% endif %}
+                </ul>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+                {% endif %}
 
                 </ul>
             </div>
@@ -135,7 +139,7 @@
     </header>
 
 
-    <main class="container">
+    <main class="container main-section">
         {% if messages %}
         {% for message in messages %}
         <br>

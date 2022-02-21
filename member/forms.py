@@ -1,5 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 from django import forms
 from virtualbookshelf2022.models import Profile
 
@@ -9,10 +10,12 @@ class ProfilePageForm(forms.ModelForm):
         fields = ('bio', 'image','instagram_url', 'facebook_url')
         widgets = {
             'bio':forms.Textarea(attrs={'class':'form-control' }),
-            #'image':forms.TextInput(attrs={'class':'form-control'}),
+            'image':forms.TextInput(attrs={'class':'form-control'}),
             'instagram_url': forms.TextInput(attrs={'class':'form-control'}),
             'facebook_url': forms.TextInput(attrs={'class':'form-control'}),
     }
+
+
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
@@ -50,3 +53,20 @@ class PasswordChangingForm(PasswordChangeForm):
     class Meta:
         model = User
         fields = ('old_password','new_password1','new_password2')
+
+
+class UserUpdateForm(forms.ModelForm):
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
+    username = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    class Meta:
+      model = User
+      fields = ['username', 'email']
+
+class ProfileUpdateForm(forms.ModelForm):
+   class Meta:
+      model = Profile
+      fields = ['image']
+
+
+
+
